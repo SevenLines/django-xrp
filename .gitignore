@@ -1,0 +1,6 @@
+.idea
+__pycache__
+db.sqlite3
+migrations/
+/exmo/local_settings.py
+/old.py
