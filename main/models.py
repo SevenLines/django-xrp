@@ -10,6 +10,6 @@ class Ticker(models.Model):
     last_trade = models.DecimalField(max_digits=20, decimal_places=8)
     low = models.DecimalField(max_digits=20, decimal_places=8)
     sell_price = models.DecimalField(max_digits=20, decimal_places=8)
-    updated = models.DecimalField(max_digits=20, decimal_places=8)
+    updated = models.IntegerField()
     vol = models.DecimalField(max_digits=20, decimal_places=8)
     vol_curr = models.DecimalField(max_digits=20, decimal_places=8)
