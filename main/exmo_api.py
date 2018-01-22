@@ -8,6 +8,10 @@ import time
 from django.conf import settings
 
 
+class ApiError(Exception):
+    pass
+
+
 class ExmoAPI:
     def __init__(self, API_URL='api.exmo.com', API_VERSION='v1'):
         self.API_URL = API_URL
@@ -43,11 +47,11 @@ class ExmoAPI:
             obj = json.loads(response.decode('utf-8'))
             if 'error' in obj and obj['error']:
                 print(obj['error'])
-                raise sys.exit()
+                raise ApiError("wrong json")
             return obj
         except json.decoder.JSONDecodeError:
             print('Error while parsing response:', response)
-            raise sys.exit()
+            raise
 
     def user_info(self):
         return self.api('user_info')
