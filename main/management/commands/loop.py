@@ -1,4 +1,4 @@
-from pprint import pprint
+import traceback
 from time import sleep
 
 from django.conf import settings
@@ -12,7 +12,11 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         api = ExmoAPI()
         while True:
-            data = api.ticker(settings.CURRENCY)
-            ticker = Ticker.objects.create(**data)
-            print(ticker.pk)
+            try:
+                data = api.ticker(settings.CURRENCY)
+            except Exception as ex:
+                traceback.print_exc()
+            else:
+                ticker = Ticker.objects.create(**data)
+                print(ticker.pk)
             sleep(1)
