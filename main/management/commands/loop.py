@@ -20,5 +20,4 @@ class Command(BaseCommand):
                 traceback.print_exc()
             else:
                 ticker = Ticker.objects.create(**data)
-                print(ticker.pk)
             sleep(1)
