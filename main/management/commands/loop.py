@@ -15,7 +15,7 @@ class Command(BaseCommand):
         while True:
             try:
                 data = api.ticker(settings.CURRENCY)
-            except [ApiError, JSONDecodeError] as ex:
+            except Exception as ex:
                 traceback.print_stack()
                 traceback.print_exc()
             else:

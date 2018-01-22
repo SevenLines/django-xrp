@@ -8,7 +8,7 @@ import time
 from django.conf import settings
 
 
-class ApiError(Exception):
+class ApiError(BaseException):
     pass
 
 
